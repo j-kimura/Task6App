@@ -15,8 +15,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        changeQuestionLabel()
-        answerSlider.value = 50
+        restartGame()
         self.currentValue = "\(Int(answerSlider.value))"
     }
 
@@ -32,15 +31,16 @@ class ViewController: UIViewController {
         presentAlert(message: "あたり!\nあなたの値：\(self.currentValue)")
     }
 
-    private func changeQuestionLabel() {
+    private func restartGame() {
         self.questionLabel.text = "\(Int.random(in: 0...100))"
+        answerSlider.value = 50
         }
 
     private func presentAlert(message: String) {
         let alert = UIAlertController(title: "結果", message: message, preferredStyle: .alert)
 
         let nextQuestionAction = UIAlertAction(
-            title: "再挑戦", style: .default, handler: { (_ : UIAlertAction!) -> Void in self.changeQuestionLabel()})
+            title: "再挑戦", style: .default, handler: { (_ : UIAlertAction!) -> Void in self.restartGame()})
         alert.addAction(nextQuestionAction)
 
         present(alert, animated: true, completion: nil)
