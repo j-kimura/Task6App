@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet private weak var questionLabel: UILabel!
     @IBOutlet private weak var answerSlider: UISlider!
-    var currentValue: String = "50"
+    private var currentValue: String = "50"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,6 @@ class ViewController: UIViewController {
 
     @IBAction private func changeSlider(_ sender: Any) {
         self.currentValue = "\(Int(self.answerSlider.value))"
-        print(currentValue)
     }
 
     @IBAction private func checkAnswerButton(_ sender: Any) {
